@@ -362,3 +362,5 @@ carCounter(); // Output: Car count: 4
 
 
 //In this case the closure is good for making a private variable that can only be accessed and modified by the inner function
+
+
