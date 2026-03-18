@@ -1,0 +1,7 @@
+{
+  "files.exclude": {
+    "index.js": true
+  },
+  "js/ts.validate.enabled": false
+}
+
