@@ -143,3 +143,65 @@ var carModels1 = ['BMW', 'Audi'];
 var carModels2 = ['Mercedes', 'Tesla'];
 var mergedCarModels = __spreadArray(__spreadArray([], carModels1, true), carModels2, true);
 console.log("Merged Car Models:", mergedCarModels); // Output: Merged Car Models: [ 'BMW', 'Audi', 'Mercedes', 'Tesla' ]
+//Object in JavaScript
+var carObject = {
+    model: 'BMW',
+    year: 2020,
+    isElectric: false,
+};
+//Defining a object with a object constructor
+var carObjectConstructor = new Object();
+carObjectConstructor.model = 'Audi';
+carObjectConstructor.year = 2019;
+carObjectConstructor.isElectric = false;
+console.log("Car made using object constructor: ", carObjectConstructor); // Output: Car Object: { model: 'BMW', year: 2020, isElectric: false }
+//Itterating over an object
+console.log("Iterating over carObject:");
+for (var key in carObject) {
+    console.log("".concat(key, ": ").concat(carObject[key]));
+}
+//Also we can itterate using entries
+console.log("Iterating over carObject using entries:");
+for (var _i = 0, _a = Object.entries(carObject); _i < _a.length; _i++) {
+    var _b = _a[_i], key = _b[0], value = _b[1];
+    console.log("".concat(key, ": ").concat(value));
+}
+//Object deep copy
+var carObjectCopy = JSON.parse(JSON.stringify(carObject));
+console.log("Car Object Copy:", carObjectCopy); // Output: Car Object Copy: { model: 'BMW', year: 2020, isElectric: false }
+//or
+var carObjectCopy2 = structuredClone(carObject);
+console.log("Car Object Copy 2:", carObjectCopy2); // Output: Car Object Copy 2: { model: 'BMW', year: 2020, isElectric: false }
+//Arrays in JavaScript
+var carArray = ['BMW', 'Audi', 'Mercedes'];
+//Itterating over an array
+console.log("Iterating over carArray:");
+for (var _c = 0, carArray_1 = carArray; _c < carArray_1.length; _c++) {
+    var car_1 = carArray_1[_c];
+    console.log(car_1);
+}
+//Itterating over an array using forEach
+console.log("Iterating over carArray using forEach:");
+carArray.forEach(function (car) { return console.log(car); });
+//Itterating over an array using map
+console.log("Iterating over carArray using map:");
+carArray.map(function (car) { return console.log(car); });
+//Iterating over an array using for loop
+console.log("Iterating over carArray using for loop:");
+for (var i = 0; i < carArray.length; i++) {
+    console.log(carArray[i]);
+}
+//Accessor methods
+console.log("First car:", carArray[0]); // Output: First car: BMW
+console.log("Last car:", carArray[carArray.length - 1]); // Output: Last car: Mercedes
+//Mutator methods
+carArray.push('Tesla'); // Adds an element to the end of the array
+console.log("After push:", carArray);
+carArray.pop(); // Removes the last element of the array
+console.log("After pop:", carArray);
+carArray.unshift('Volkswagen');
+console.log("After unshift:", carArray); // Adds an element to the beginning of the array
+carArray.shift();
+console.log("After shift:", carArray); // Removes the first element of the array
+carArray.splice(1, 1); // Removes an element at a specific index, in this case it removes the element at index 1
+console.log("After splice:", carArray); // Output: After splice: [ 'BMW', 'Mercedes' ]
