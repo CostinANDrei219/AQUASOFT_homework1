@@ -327,3 +327,19 @@ myPromise.then((message) => {
 }).catch((error) => {
     console.log("Promise rejected:", error); // Output: Promise rejected: The car is not working!
 });
+
+//Async/Await
+
+//For this exammple, i have use the REST Countries API to fetch data about a country and show async/await in action
+
+async function fetchCountryData(country: string) {
+    try {
+        const response = await fetch(`https://restcountries.com/v3.1/name/${country}`);
+        const data = await response.json();
+        console.log("Country Data:", data);
+    } catch (error) {
+        console.log("Error fetching country data:", error);
+    }   
+}
+fetchCountryData('Germany'); // Output: Country Data: [ { name: { common: 'Germany', official: 'Federal Republic of Germany', nativeName: [Object] }, ... } ]
+
