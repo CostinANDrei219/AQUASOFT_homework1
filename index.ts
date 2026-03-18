@@ -286,3 +286,44 @@ carArray.shift();
 console.log("After shift:", carArray); // Removes the first element of the array
 carArray.splice(1, 1); // Removes an element at a specific index, in this case it removes the element at index 1
 console.log("After splice:", carArray); // Output: After splice: [ 'BMW', 'Mercedes' ]
+
+
+//Javascript callbacks
+function showCarSound(car:string, callback) {
+    console.log(`${car} goes vroom!`);
+    callback();
+}
+function popsAndBangs() {
+    console.log("Popopop!");
+}
+showCarSound('BMW', popsAndBangs); // Output: BMW goes vroom! Popopop!
+
+//This was a synchronous callback, but we can also have asynchronous callbacks
+console.log("Engine is starting...");
+function showCarSoundAsync(car:string, callback) {
+    setTimeout(() => {
+        console.log(`${car} goes vroom!`);
+        callback();
+    }, 1000);
+}   
+console.log("Engine is warming up...");
+showCarSoundAsync('Audi', popsAndBangs); // Output after 1 second: Audi goes vroom! Popopop!
+
+
+//Promises
+const myPromise = new Promise((resolve, reject) => {
+
+    const isCarWorking = true; // Change this to false to see the reject case
+    if (isCarWorking) {
+        resolve("The car is working!");
+    }
+    else {
+        reject("The car is not working!");
+    }
+});
+
+myPromise.then((message) => {
+    console.log("Promise resolved:", message); // Output: Promise resolved: The car is working!
+}).catch((error) => {
+    console.log("Promise rejected:", error); // Output: Promise rejected: The car is not working!
+});
