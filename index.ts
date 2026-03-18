@@ -343,3 +343,22 @@ async function fetchCountryData(country: string) {
 }
 fetchCountryData('Germany'); // Output: Country Data: [ { name: { common: 'Germany', official: 'Federal Republic of Germany', nativeName: [Object] }, ... } ]
 
+//CLosures
+//I did not use explicitly closures in my past experience, so the concept is relatively new to me
+
+function createCarCounter() {
+    let count = 0;
+    return function innerFunction() {
+        count++;
+        console.log(`Car count: ${count}`);
+    }
+}
+//console.log(count); // This will throw an error because count is not defined in the global scope, it's only accessible inside the createCarCounter function
+const carCounter = createCarCounter();
+carCounter.in(); // Output: Car count: 1
+carCounter(); // Output: Car count: 2
+carCounter(); // Output: Car count: 3
+carCounter.innerFunction(); // Output: Car count: 4
+
+
+//In this case the closure is good for making a private variable that can only be accessed and modified by the inner function

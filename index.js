@@ -302,3 +302,16 @@ function fetchCountryData(country) {
     });
 }
 fetchCountryData('Germany'); // Output: Country Data: [ { name: { common: 'Germany', official: 'Federal Republic of Germany', nativeName: [Object] }, ... } ]
+//CLosures
+//I did not use explicitly closures in my past experience, so the concept is relatively new to me
+function createCarCounter() {
+    var count = 0;
+    return function innerFunction() {
+        count++;
+        console.log("Car count: ".concat(count));
+    };
+}
+var carCounter = createCarCounter();
+carCounter(); // Output: Car count: 1
+carCounter(); // Output: Car count: 2
+carCounter(); // Output: Car count: 3
