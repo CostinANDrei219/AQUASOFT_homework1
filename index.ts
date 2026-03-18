@@ -1,5 +1,124 @@
 //ES6 Methods
-//
+//Arrow functions
+const fuelConsumption = (fuel: number, distance: number): number => {
+    return fuel / distance;
+}
+console.log("Fuel Consumption:", fuelConsumption(50, 500)); // Output: Fuel Consumption: 0.1
+ 
+//Array find
+const engineSize = [2.0, 1.8, 2.1, 3.0, 2.2, 1.4];
+const bigEngines = engineSize.find(size => size >= 2.1); //Will return the first element that satisfies the condition
+console.log("Big Engines:", bigEngines); // Output: Big Engines: 2.1
+
+//Array find index
+const bigEngineIndex = engineSize.findIndex(size => size >= 2.1); //Will return the index of the first element that satisfies the condition
+console.log("Big Engine Index:", bigEngineIndex); // Output: Big Engine Index: 2
+
+//Array includes
+const hasRWD = ['BMW', 'Audi', 'Mercedes'].includes('BMW'); //Will return true if the element is in the array
+console.log("Has RWD:", hasRWD); // Output: Has RWD: true
+
+//Default parameters
+const calculateConsumptionPer100km = (fuel: number, distance: number = 100): number => {
+    return fuel / distance * 100;
+}   
+console.log("Calculate Consumption:", calculateConsumptionPer100km(50)); // Output: Calculate Consumption: 50
+
+//Object keys and values
+const car = {
+    model: 'BMW',
+    year: 2020, 
+    isElectric: false
+}
+console.log("Car Keys:", Object.keys(car)); // Output: Car Keys: [ 'model', 'year', 'isElectric' ]
+console.log("Car Values:", Object.values(car)); // Output: Car Values: [ 'BMW', 2020, false ]
+
+
+//Map and Set
+//Maps store values in key-value pairs, and we can have duplicate values but not duplicate keys
+const carMap = new Map<string, number>();
+carMap.set('BMW', 2020);
+carMap.set('Audi', 2019);
+console.log("Car Map:", carMap); // Output: Car Map: Map(2) { 'BMW' => 2020, 'Audi' => 2019 }
+console.log(carMap.get('BMW')); // Output: 2020
+
+//Sets store unique values, and we cannot have duplicate values in a set.
+const carSet = new Set<string>();   
+carSet.add('BMW');
+carSet.add('Audi');
+carSet.add('BMW'); // Will not be added because it's a set and it only allows unique values
+console.log("Car Set:", carSet); // Output: Car Set: Set(2) { 'BMW', 'Audi' }
+console.log(carSet.has('BMW')); // Output: true
+
+//Difference between let, const and var
+
+//Var
+var carBrand = 'BMW';
+//Var is either global scoped or function scoped
+function varTest() {
+    var carBrand = 'Audi';
+    console.log("Inside varTest:", carBrand); // Output: Inside varTest: Audi\
+    var x = 1;
+}
+varTest();
+//console.log("x:", x); // Output: x: 1 // This will throw an error because x is function scoped and cannot be accessed outside the function
+console.log("Outside varTest:", carBrand); // Output: Outside varTest: BMW
+
+
+//Var can be redeclared and updated
+var carBrand = 'Mercedes';
+console.log("Redeclared var:", carBrand); // Output: Redeclared var: Mercedes
+carBrand = 'Audi';
+console.log("Updated var:", carBrand); // Output: Updated var: Audi
+
+//Var hoisting
+console.log("Hoisted var:", hoistedVar); // Output: Hoisted var: undefined // This will not throw an error because var is hoisted and initialized with undefined
+var hoistedVar = 'I am hoisted';
+console.log("Hoisted var after declaration:", hoistedVar); // Output: Hoisted var after declaration: I am hoisted
+
+//Let
+//Let is block scoped so
+if (true) {
+    let carSeries = '3 Series'; 
+    console.log("Inside block:", carSeries); // Output: Inside block: 3 Series
+}   
+//console.log("Outside block:", carBrand); // Output: Outside block: 3 Series // This will throw an error because let is block scoped and cannot be accessed outside the block
+
+//Let cannot be redeclared but can be updated
+let engineModel = 'B58';
+//let engineModel = 'N55'; // This will throw an error because let cannot be redeclared
+engineModel = 'N55';
+console.log("Updated enginemodel using let:", engineModel); // Output: Updated let: N55
+
+
+//Let is not hoisted
+//console.log("Hoisted let:", hoistedLet); // This will throw an error because let is not hoisted
+let hoistedLet = 'I am not hoisted';
+console.log("Hoisted let after declaration:", hoistedLet); // Output: Hoisted let after declaration: I am not hoisted
+
+
+//Const
+//Const is block scoped 
+if (true) {
+    const carType = 'Sedan';
+    console.log("Inside block:", carType); // Output: Inside block: Sedan
+}
+//console.log("Outside block:", carType); // Output: Outside block: Sedan // This will throw an error because const is block scoped and cannot be accessed outside the block
+
+//Const cannot be redeclared or updated
+const carColor = 'Red';
+//const carColor = 'Blue'; // This will throw an error because const cannot be redeclared
+//carColor = 'Blue'; // This will throw an error because const cannot be updated
+console.log("Const car color:", carColor); // Output: Const car color: Red
+
+//Const is not hoisted
+//console.log("Hoisted const:", hoistedConst); // This will throw an error because const is not hoisted
+const hoistedConst = 'I am not hoisted';
+console.log("Hoisted const after declaration:", hoistedConst); // Output: Hoisted const after declaration: I am not hoisted 
+
+
+
+
 
 
 
@@ -70,4 +189,21 @@ const myCar: CarInterface = {
 }
 console.log("myCar:", myCar);
 
-    
+
+//Spread operator
+const car1 = {
+    model: 'BMW',
+    year: 2020
+}
+const car2 = {
+    color: 'red',
+    isElectric: false
+}
+const mergedCar = {...car1, ...car2};
+console.log("Merged Car:", mergedCar); // Output: Merged Car: { model: 'BMW', year: 2020, color: 'red', isElectric: false }
+
+//Another example of spread operator with arrays
+const carModels1 = ['BMW', 'Audi'];
+const carModels2 = ['Mercedes', 'Tesla'];
+const mergedCarModels = [...carModels1, ...carModels2];
+console.log("Merged Car Models:", mergedCarModels); // Output: Merged Car Models: [ 'BMW', 'Audi', 'Mercedes', 'Tesla' ]
