@@ -355,10 +355,10 @@ function createCarCounter() {
 }
 //console.log(count); // This will throw an error because count is not defined in the global scope, it's only accessible inside the createCarCounter function
 const carCounter = createCarCounter();
-carCounter.in(); // Output: Car count: 1
+carCounter(); // Output: Car count: 1
 carCounter(); // Output: Car count: 2
 carCounter(); // Output: Car count: 3
-carCounter.innerFunction(); // Output: Car count: 4
+carCounter(); // Output: Car count: 4
 
 
 //In this case the closure is good for making a private variable that can only be accessed and modified by the inner function
